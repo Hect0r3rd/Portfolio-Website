@@ -10,6 +10,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+      /* Layout: mimic a compact printed resume */
+      :root{--accent:#2f63ff;--muted:#6b7280;--max-width:920px}
+      body{font-family:Roboto,system-ui,Segoe UI,Arial,sans-serif;color:#111;line-height:1.45}
+      .container{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+      .resume-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+      @media(min-width:900px){.resume-grid{grid-template-columns:320px 1fr;align-items:start}}
+
+      /* Sidebar */
+      aside{padding:0}
+      .pdf-embed{background:#fff;border-radius:8px;padding:14px;border:1px solid rgba(15,23,42,0.06);box-shadow:0 6px 20px rgba(12,25,80,0.04)}
+      .pdf-actions{display:flex;gap:0.6rem;align-items:center}
+      .btn{display:inline-flex;gap:0.5rem;align-items:center;padding:8px 12px;background:var(--accent);border-radius:8px;color:#fff;text-decoration:none;border:none;cursor:pointer;font-weight:600}
+      .btn.secondary{background:#4b6bff}
+
+      /* Contact */
+      .resume-contact{display:flex;flex-direction:column;gap:0.6rem}
+      .contact-item{display:flex;gap:0.6rem;align-items:center}
+      .contact-item i{color:var(--accent);min-width:20px}
+      /* Quick Links icons */
+      .resume-aside ul{list-style:none;padding-left:0;margin:0}
+      .resume-aside li{margin-bottom:0.6rem}
+      .resume-aside a i{margin-right:0.5rem;color:var(--accent)}
+
+      /* Main content typography */
+      h1.logo{font-family:Poppins,Roboto,system-ui;font-weight:700;font-size:1.6rem;margin:0}
+      h2.section-title{font-size:1rem;margin:0 0 8px 0;color:#0b1220}
+      h3{font-size:1rem;margin:0 0 6px 0}
+      .job-meta{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+      ul{margin:0 0 12px 1.2rem}
+
+      /* Visual separators for print-like look */
+      @media(min-width:900px){
+        aside{padding-right:18px;border-right:1px solid rgba(15,23,42,0.04)}
+      }
+
+      /* Print rules: hide chrome and ensure two-column print */
+      @media print{
+        header.site-header, nav.site-nav, footer.site-footer, .pdf-modal{display:none}
+        .container{padding:0}
+        .resume-grid{grid-template-columns:260px 1fr;gap:12px}
+        body{background:#fff;color:#000}
+        a:after{content:''}
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -32,35 +78,146 @@
       </ul>
     </nav>
 
-    <main>
+    <main class="container">
       <h1>Resume</h1>
-      <p>Place your resume PDF in this folder as <code>resume.pdf</code>. It will embed below.</p>
 
-      <section>
-        <h2>Embedded Resume (PDF)</h2>
-        <p>If your browser blocks embedding, use the download link below.</p>
-        <object data="resume.pdf" type="application/pdf" width="100%" height="800">
-          <p>It looks like your browser can't display PDFs. Download the resume: <a href="resume.pdf">Download resume (PDF)</a>.</p>
-        </object>
+      <div class="resume-grid">
+        <aside class="resume-aside">
+          <div class="pdf-embed">
+            <h2 class="section-title">PDF (download)</h2>
+            <div class="pdf-actions">
+              <button id="viewPdfBtn" class="btn"><i class="fa-solid fa-eye" aria-hidden="true"></i> View PDF</button>
+              <a href="resume.pdf" download class="btn secondary"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF</a>
+            </div>
+          </div>
 
-        <p>
-          <a href="resume.pdf" download>Download Resume (PDF)</a>
-        </p>
-      </section>
+          <section>
+            <h2 class="section-title">Education</h2>
+            <p><strong>University of Texas Rio Grande Valley (UTRGV)</strong><br>Aug 2022 – Dec 2025<br>Bachelor of Science in Computer Science</p>
+            <p><em>Relevant Courses:</em> Database Design, Data Mining, Data Structures and Algorithms</p>
+          </section>
 
-      <section>
-        <h2>Notes</h2>
-        <ul>
-          <li>Tip: Use a concise, one-page PDF for recruiters.</li>
-          <li>Include contact info, education, experience, projects, and skills.</li>
-        </ul>
-      </section>
+          <section>
+            <h2 class="section-title">Quick Links</h2>
+            <ul>
+              <li><a href="experience.html">Experience</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="contact.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact Page</a></li>
+              <li><a href="skills.html"><i class="fa-solid fa-star" aria-hidden="true"></i> Skills Page</a></li>
+            </ul>
+          </section>
+        </aside>
+
+        <section>
+          <h2 id="summary" class="section-title">Professional Summary</h2>
+          <p>Computer Science student and software developer focused on backend development and accessible learning apps. I prototype quickly, integrate models where needed, and design backend systems for real-time interaction.</p>
+
+          <h2 id="experience" class="section-title">Work Experience</h2>
+          <article id="exp-handlingo">
+            <h3>Handlingo — Software Developer &amp; Co-Founder</h3>
+            <div class="job-meta">Jan 2025 – Jun 2025</div>
+            <ul>
+              <li>Co-founded an ASL learning startup app using a landmark-based computer vision model for real-time sign recognition (&lt;100 ms latency), enhancing accessibility for learners.</li>
+              <li>Integrated the model directly into the app to remove external API latency and deliver a smoother, responsive user experience.</li>
+              <li>Designed a Supabase architecture supporting real-time progress tracking and seamless multi-user scalability.</li>
+            </ul>
+          </article>
+
+          <article id="exp-ta">
+            <h3>Teaching Assistant — Computer Science, UTRGV</h3>
+            <div class="job-meta">Oct 2023 – Present</div>
+            <ul>
+              <li>Guided 100+ students in software design, development, and testing using Java, C++, and Python.</li>
+              <li>Conducted code reviews and provided actionable feedback, improving code quality and maintainability.</li>
+              <li>Facilitated group projects and one-on-one mentoring, fostering collaboration and agile problem-solving.</li>
+            </ul>
+          </article>
+
+          <h2 id="projects" class="section-title">Projects</h2>
+          <article id="proj-ai-npcs">
+            <h3>AI NPCs</h3>
+            <div class="job-meta">Fall 2023</div>
+            <p>(Python, Jupyter Notebook, Git, OpenAI GPT)</p>
+            <ul>
+              <li>Built an AI-driven NPC dialogue system using OpenAI GPT for dynamic, context-aware player interaction.</li>
+              <li>Developed a custom API pipeline to process player inputs and generate realistic in-game responses, earning 90%+ positive participant feedback.</li>
+              <li>Collaborated in a 4-member team managing Git-based version control and integrated AI modules into a working prototype.</li>
+            </ul>
+            <p><a href="https://github.com/Hect0r3rd" target="_blank">GitHub</a></p>
+          </article>
+
+          <article id="proj-handlingo">
+            <h3>Handlingo — ASL learning app</h3>
+            <p>(JavaScript, TypeScript, Next.js, React, Supabase)</p>
+            <ul>
+              <li>Embedded a landmark-based computer-vision model for near-instant recognition and feedback.</li>
+              <li>Designed real-time features and database schemas to track learner progress.</li>
+            </ul>
+            <p><a href="https://github.com/Hect0r3rd" target="_blank">GitHub</a></p>
+          </article>
+
+          <h2 class="section-title">Leadership &amp; Involvement</h2>
+          <article>
+            <h3>Hackathon Organizer &amp; Technical Lead — Frontera Devs</h3>
+            <div class="job-meta">Aug 2023 – Present</div>
+            <ul>
+              <li>Launched a mentorship program pairing 25 mentees with experienced developers, boosting engagement and retention.</li>
+              <li>Led technical workshops on Git, databases, and web frameworks for 100+ students, strengthening the local developer community.</li>
+            </ul>
+          </article>
+        </section>
+      </div>
     </main>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="pdf-modal" aria-hidden="true">
+      <div class="pdf-modal-content">
+        <button id="closePdfBtn" class="pdf-modal-close" aria-label="Close PDF">×</button>
+        <iframe id="pdfFrame" src="resume.pdf" frameborder="0" style="width:100%;height:100%;"></iframe>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="container">
         <p>&copy; 2025 Hector Sustaita.</p>
       </div>
     </footer>
+
+    <style>
+      /* Modal styles */
+      .pdf-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:9999}
+      .pdf-modal[aria-hidden="false"]{display:flex}
+      .pdf-modal-content{width:92%;height:92%;background:#fff;border-radius:8px;overflow:hidden;position:relative;box-shadow:0 10px 30px rgba(11,92,255,0.08)}
+      .pdf-modal-close{position:absolute;right:8px;top:8px;background:#111;color:#fff;border:none;padding:6px 10px;border-radius:4px;cursor:pointer;font-size:18px}
+      .btn{display:inline-flex;gap:0.5rem;align-items:center;padding:8px 12px;background:var(--accent);border-radius:8px;color:#fff;text-decoration:none;border:none;cursor:pointer;font-weight:600}
+    </style>
+
+    <script>
+      // PDF modal open/close
+      const viewBtn = document.getElementById('viewPdfBtn');
+      const pdfModal = document.getElementById('pdfModal');
+      const closeBtn = document.getElementById('closePdfBtn');
+      const pdfFrame = document.getElementById('pdfFrame');
+      viewBtn && viewBtn.addEventListener('click', () => {
+        pdfModal.setAttribute('aria-hidden', 'false');
+        // ensure frame reloads for some browsers
+        pdfFrame.src = 'resume.pdf';
+      });
+      closeBtn && closeBtn.addEventListener('click', () => {
+        pdfModal.setAttribute('aria-hidden', 'true');
+        pdfFrame.src = '';
+      });
+      pdfModal && pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) { pdfModal.setAttribute('aria-hidden', 'true'); pdfFrame.src = ''; }
+      });
+
+      // Smooth scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const target = document.querySelector(this.getAttribute('href'));
+          if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+        });
+      });
+    </script>
   </body>
 </html>

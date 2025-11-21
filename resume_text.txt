@@ -1,0 +1,37 @@
+Hector Sustaita
+/envel⌢pesustaitah03@gmail.com |♂¶obile(956)703-8686 |/linkedinHector Sustaita |/githubHect0r3rd
+Education
+University of Texas Rio Grande Valley (UTRGV) Aug 2022 – Dec 2025
+Bachelor of Science in Computer Science
+Relevant Courses: Database Design, Data Mining, Data Structures and Algorithms
+Technical Skills
+Languages: C++, Python, Java, JavaScript, TypeScript, SQL, Ruby
+Frameworks/Tools: React, Node.js, Next.js, Flutter, Git, JavaFX
+Databases/Platforms: Supabase, Jupyter Notebook, Google Colab
+Work Experience
+Handlingo – Software Developer & Co-Founder Jan 2025 – Jun 2025
+•Co-founded an ASL learning startup app using a landmark-based computer vision model for real-time
+sign recognition ( <100 ms latency), enhancing accessibility for learners.
+•Integrated the model directly into the app to remove external API latency and deliver a smoother,
+responsive user experience.
+•Designed a Supabase architecture supporting real-time progress tracking and seamless multi-user scal-
+ability.
+Teaching Assistant – Computer Science, UTRGV Oct 2023 – Present
+•Guided 100+ students in software design, development, and testing using Java, C++, and Python.
+•Conducted code reviews and provided actionable feedback, improving code quality and maintainability.
+•Facilitated group projects and one-on-one mentoring, fostering collaboration and agile problem-solving.
+Projects
+AI NPCs(Python, Jupyter Notebook, Git, Public API, Open AI GPT) Fall 2023
+•Built an AI-driven NPC dialogue system using OpenAI GPT for dynamic, context-aware player inter-
+action.
+•Developed a custom API pipeline to process player inputs and generate realistic in-game responses,
+earning 90%+ positive participant feedback.
+•Collaborated in a 4-member team managing Git-based version control and integrated AI modules into
+a working prototype.
+Leadership & Involvement
+Hackathon Organizer & Technical Lead – Frontera Devs Aug 2023 – Present
+University of Texas Rio Grande Valley
+•Launched a mentorship program pairing 25 mentees with experienced developers, boosting engagement
+and retention.
+•Led technical workshops on Git, databases, and web frameworks for 100+ students, strengthening the
+local developer community.

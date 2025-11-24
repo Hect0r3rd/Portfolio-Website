@@ -80,7 +80,7 @@ html, body {
 	background-size: cover;
 	background-position: center;
 	color: white;
-	padding: 40px 0;
+    padding: 36px 0 28px 0;
 	position: relative; /* for overlay */
 }
 .hero::before {
@@ -88,6 +88,52 @@ html, body {
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(rgba(1,79,134,0.45), rgba(1,79,134,0.22));
+}
+
+/* Ensure the hero's white container sits above the overlay */
+.hero > .container {
+	position: relative;
+	z-index: 1;
+	color: #fff; /* keep hero text readable */
+	/* Override the default white card for hero so the background shows through */
+	background: transparent;
+	box-shadow: none;
+	padding: 40px 0;
+	border-radius: 0;
+}
+
+/* Hero typography tweaks for clearer hierarchy */
+.hero h1 {
+	font-size: 2.8rem;
+	margin: 0 0 12px 0;
+	font-weight: 700;
+}
+.hero .lead {
+	font-size: 1.125rem;
+	margin: 0 0 10px 0;
+	max-width: 900px;
+}
+
+/* Hero CTA layout and subtle resume link */
+.hero .hero-ctas {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-top: 18px;
+}
+.hero .hero-link {
+	color: rgba(255,255,255,0.95);
+	text-decoration: underline;
+	font-weight: 500;
+}
+.hero .btn {
+	background: rgba(255,255,255,0.12);
+	color: #fff;
+	padding: 10px 16px;
+	border-radius: 6px;
+}
+.hero .btn:hover {
+	background: rgba(255,255,255,0.16);
 }
 .site-header {
   background: transparent; /* let the page blue show through */
@@ -433,6 +479,13 @@ section > .container h3 {
 	text-align: center;
 }
 
+/* On About cards prefer left-aligned heading for better flow on homepage */
+.about > .container h2 {
+	text-align: left;
+	font-size: 1.25rem;
+	margin-top: 0;
+}
+
 /* Headings and typographic rhythm */
 h2 {
 	font-family: 'Poppins', sans-serif;
@@ -443,6 +496,22 @@ h3 {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1rem;
 	margin-bottom: 6px;
+}
+
+/* Tagline styling for pages like About/Intro */
+.tagline {
+	display: block;
+	font-size: 1rem;
+	color: var(--blue-900);
+	margin: 8px 0 12px 0;
+	text-align: center;
+	font-weight: 600;
+}
+
+/* Ensure paragraph text inside content cards is visible and spaced */
+section > .container p {
+	color: var(--text-dark);
+	margin: 0 0 12px 0;
 }
 
 

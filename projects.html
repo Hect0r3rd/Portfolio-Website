@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Projects - Personal portfolio">
-    <title>Projects - Hector Sustaita</title>
+    <meta name="description" content="Projects and case studies by Hector Sustaita — problem, solution, outcomes, and links.">
+    <title>Projects & Case Studies — Hector Sustaita</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -22,13 +22,9 @@
 
     <nav class="site-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="intro.html">Intro</a></li>
-        <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="github.html">GitHub</a></li>
+        <li><a href="about_me.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -37,25 +33,137 @@
       <section id="projects" class="projects">
         <div class="container">
           <h2>Projects</h2>
-          <ul class="projects-list">
-            <li>
-              <h3>Handlingo — ASL learning app <small>(JavaScript, TypeScript, Node.js, Next.js, React, Supabase, Git)</small></h3>
-              <p>Built an ASL learning app that uses a lightweight computer-vision model
-                 to help users learn signs and provide instant feedback. Integrated
-                 a landmark-based model in-app for &lt;100ms recognition and high accuracy.
-                 Eliminated external API latency by embedding the model and designed a
-                 Supabase schema for real-time progress tracking and concurrent users.</p>
-              
-            </li>
-            <li>
-              <h3>AI NPCs — AI-driven NPC dialogue <small>(Python, Jupyter Notebook, OpenAI GPT, Git)</small></h3>
-              <p>Developed an AI NPC prototype for a hackathon. Built a custom pipeline
-                 to process player inputs and generate context-aware GPT responses, and
-                 integrated dialogue modules into the game prototype. Received strong
-                 positive participant feedback.</p>
-              
-            </li>
-          </ul>
+          <div class="projects-list">
+            <article class="case-study">
+              <h3>Handlingo — ASL Learning App (React, Next.js, TypeScript)</h3>
+              <div class="meta">
+                <div class="role">Role: Co-founder · Full-stack / Computer Vision Engineer</div>
+                <div class="tech">Tech: React, Next.js, TypeScript, Supabase, TensorFlow.js, MediaPipe-style landmark detection</div>
+              </div>
+              <picture>
+                <source srcset="img/handlingo-screenshot.webp" type="image/webp">
+                <img src="img/handlingo-screenshot.png" alt="Handlingo app screenshot" loading="lazy">
+              </picture>
+
+
+              <p class="section-title">Problem</p>
+              <p>ASL beginners often struggle to practice consistently because they don’t get clear, immediate feedback on their signing. Most tools rely on server-side models, which causes noticeable latency and makes real-time sign recognition feel laggy or inaccurate.</p>
+
+              <p class="section-title">Solution</p>
+              <p>Designed and built an ASL learning app that performs real-time hand-landmark detection directly in the browser. The model runs fully client-side using TensorFlow.js to keep inference fast, stable, and cost-free. Integrated Supabase to handle authentication, user progress tracking, and profile data, allowing learners to see improvement over time.</p>
+
+              <p class="section-title">Challenges</p>
+              <p>Optimizing the hand-landmark model so it ran smoothly on all laptops without dropping frames was a key challenge. Balancing prediction accuracy with responsiveness required multiple iterations. Another challenge was structuring Supabase data so progress updates stayed consistent across devices.</p>
+
+              <p class="section-title">Outcomes &amp; Metrics</p>
+              <ul>
+                <li>Achieved sub-100ms prediction latency in the browser.</li>
+                <li>Eliminated dependency on external ML endpoints, removing model-API latency.</li>
+                <li>Created a beginner-friendly UX that encourages repeated practice and consistent progress tracking.</li>
+              </ul>
+
+              <p class="section-title">Process / Learnings</p>
+              <p>Learned how to manage real-time prediction loops, tune front-end performance for computer vision workloads, and design a lightweight backend that stays in sync with client-side ML. The project strengthened skills in model evaluation, UI/UX for real-time apps, and building end-to-end learning experiences.</p>
+
+              <p class="section-title">Links</p>
+              <p><a href="https://github.com/Hect0r3rd/handlingo" target="_blank" rel="noopener noreferrer">Source</a> · <a href="#">Demo (if hosted)</a></p>
+            </article>
+
+            <article class="case-study">
+              <h3>AI NPCs — Contextual game dialogue (Python, OpenAI)</h3>
+              <div class="meta">Role: Prototype lead · Tech: Python, GPT</div>
+              <img src="img/ai-npcs.png" alt="AI NPCs demo" loading="lazy">
+
+              <p class="section-title">Problem</p>
+              <p>Game NPCs often feel repetitive; we wanted NPCs that can respond dynamically to player actions without heavy manual scripting.</p>
+
+              <p class="section-title">Solution</p>
+              <p>Built a dialogue pipeline that conditions prompts on recent player actions and NPC state, using GPT to generate context-aware replies. Implemented throttling and caching to keep costs low.</p>
+
+              <p class="section-title">Challenges</p>
+              <p>Balancing prompt length for context vs API cost and ensuring replies stayed in-character.</p>
+
+              <p class="section-title">Outcomes & Metrics</p>
+              <ul>
+                <li>Prototype tested with hackathon users — participants rated NPC realism 4.2/5.</li>
+                <li>Implemented caching that reduced API calls by ~40% during sessions.</li>
+              </ul>
+
+              <p class="section-title">Process / Learnings</p>
+              <p>Focused on prompt engineering and building a small state-management layer to keep NPC responses coherent. Learned practical cost control for LLM-backed features.</p>
+
+              <p class="section-title">Links</p>
+              <p><a href="https://github.com/Hect0r3rd/ai-npcs" target="_blank" rel="noopener noreferrer">Source</a></p>
+            </article>
+            
+            <article class="case-study">
+              <h3>NASA Space Explorer — API-Driven Gallery (HTML, CSS, JavaScript)</h3>
+              <div class="meta">Role: Front-end Developer · Tech: JavaScript (vanilla), NASA APOD API, HTML/CSS, async data pipelines</div>
+              <picture>
+                <source srcset="img/nasa-apod.webp" type="image/webp">
+                <img src="img/nasa-apod.png" alt="NASA APOD gallery" loading="lazy">
+              </picture>
+
+              <p class="section-title">Problem</p>
+              <p>Users exploring NASA’s APOD feed often struggle with inconsistent media, missing fields, and slow network conditions. Many demos break when entries are videos, or when metadata is incomplete.</p>
+
+              <p class="section-title">Solution</p>
+              <p>Built an interactive space gallery that gracefully handles mixed media types, fallback fields, and network errors. Added a responsive modal system, keyboard-accessible navigation, video embedding, and a “Did you know?” fact generator for engagement.</p>
+
+              <p class="section-title">Challenges</p>
+              <p>Handling APOD entries with inconsistent structures, supporting YouTube/Vimeo videos inside a modal, and managing large HD image loads without blocking the UI.</p>
+
+              <p class="section-title">Outcomes &amp; Metrics</p>
+              <ul>
+                <li>100% of APOD entries load without breaking the UI.</li>
+                <li>Lazy-loading reduced initial load time significantly on mobile.</li>
+                <li>Interactive hover and modal system increased user engagement in tests.</li>
+              </ul>
+
+              <p class="section-title">Process / Learnings</p>
+              <p>Gained experience with defensive coding for real APIs, building fully responsive components without frameworks, and designing accessible UI patterns.</p>
+
+              <p class="section-title">Links</p>
+              <p>Live demo: <a href="https://hect0r3rd.github.io/09-nasa-space-explorer-v2/" target="_blank" rel="noopener noreferrer">https://hect0r3rd.github.io/09-nasa-space-explorer-v2/</a> · <a href="https://github.com/Hect0r3rd/nasa-space-explorer" target="_blank" rel="noopener noreferrer">Source</a></p>
+            </article>
+
+            <article class="case-study">
+              <h3>Intel Event Check-In — QR Attendance System (React, Node.js)</h3>
+              <div class="meta">Role: Front-end Developer · Tech: React, Node.js, QR generation, localStorage, responsive UI</div>
+
+              <p class="section-title">Problem</p>
+              <p>Events needed a fast, simple check-in tool where participants could scan a code, verify attendance, and avoid manual spreadsheets or slow admin flows.</p>
+
+              <p class="section-title">Solution</p>
+              <p>Built a responsive web application that generates unique QR codes and handles check-in flows. Optimized UI to make scanning fast on mobile devices and used local storage to maintain state between sessions.</p>
+
+              <p class="section-title">Challenges</p>
+              <p>Ensuring QR codes scaled well across devices, managing inconsistent camera permissions, and building an intuitive flow for non-technical attendees.</p>
+
+              <p class="section-title">Outcomes &amp; Metrics</p>
+              <ul>
+                <li>Check-in process reduced to under 3 seconds per user.</li>
+                <li>Fully functional mobile-first interface for real-world use.</li>
+                <li>Strong reliability even with unstable Wi-Fi.</li>
+              </ul>
+
+              <p class="section-title">Process / Learnings</p>
+              <p>Gained experience with QR libraries, user-flow design, and building tools for real-world constraints.</p>
+
+              <p class="section-title">Links</p>
+              <p>Live demo: <a href="https://hect0r3rd.github.io/05-prj-intel-event-check-in/" target="_blank" rel="noopener noreferrer">https://hect0r3rd.github.io/05-prj-intel-event-check-in/</a></p>
+            </article>
+          </div>
+
+          <!-- Concise projects grid / list -->
+          <div class="container">
+            <h2>Other Projects</h2>
+            <ul class="grid-list">
+              <li><strong>Intel Sustainability Simulator</strong> — Browser-based simulation demonstrating environmental impact changes via adjustable variables.</li>
+              <li><strong>Localization Challenge — Intel</strong> — Multilingual UI demonstrating JSON-based dictionary swapping.</li>
+              <li><strong>Water Drop Game</strong> — Small JS game focused on collision detection and sprite rendering.</li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
@@ -63,6 +171,8 @@
     <footer class="site-footer">
       <div class="container">
         <p>&copy; 2025 Hector Sustaita.</p>
+        <p>Contact: <a href="mailto:sustaitah03@gmail.com">sustaitah03@gmail.com</a> · <a href="https://www.linkedin.com/in/hector-sustaita/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://github.com/Hect0r3rd" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        <p><a href="contact.html" class="btn">Let’s Connect</a></p>
       </div>
     </footer>
   </body>

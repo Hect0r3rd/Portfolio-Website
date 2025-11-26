@@ -278,20 +278,38 @@ section {
 	gap: 8px 12px;
 }
 .skills-list li {
-	background: var(--accent-tint);
-	padding: 6px 10px;
-	border-radius: 4px;
-	font-size: 0.95rem;
+	background: #eef6fb; /* soft pale badge background */
+	padding: 8px 12px;
+	border-radius: 8px;
+	font-size: 0.98rem;
 	color: var(--text-dark);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	box-shadow: 0 1px 0 rgba(2,41,71,0.02);
 }
 
-/* Icon inside skill pill: provide consistent spacing and color */
+/* Icon inside skill badge: small rounded square to match screenshot */
 .skills-list li i {
-    width: 18px;
-    display: inline-block;
-    text-align: center;
-    margin-right: 8px;
-    color: var(--blue-600);
+	width: 28px;
+	height: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	font-size: 0.9rem;
+	color: #ffffff;
+	background: var(--blue-600);
+	border-radius: 6px;
+}
+
+/* Slight spacing for the list container */
+.skills-list {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 12px;
 }
 
 /* Interests list uses the same pill style as skills */
@@ -398,6 +416,39 @@ section.interests {
 	gap: 8px;
 	align-items: center; /* centers the list horizontally */
 }
+
+/* === New: Case studies, responsive nav & mobile tweaks === */
+/* Keep nav usable on small screens and increase tap targets */
+.site-nav ul {
+	flex-wrap: wrap;
+}
+.site-nav li { list-style: none; }
+.site-nav a { padding: 10px 14px; }
+
+/* Case study / project styles */
+.case-study {
+	border-radius: 8px;
+	background: #ffffff;
+	padding: 18px;
+	margin: 14px 0;
+	box-shadow: 0 6px 18px rgba(2,41,71,0.06);
+	color: var(--text-dark);
+}
+.case-study h3 { margin-top: 0; }
+.case-study .meta { font-size: 0.95rem; color: rgba(0,0,0,0.6); margin-bottom: 8px; }
+.case-study img { max-width: 100%; height: auto; display: block; border-radius: 6px; margin: 10px 0; }
+.case-study .section-title { font-weight: 700; margin: 12px 0 6px 0; }
+
+@media (max-width: 640px) {
+	.container { width: 94%; }
+	.site-header .logo { font-size: 2rem; }
+	.hero h1 { font-size: 1.8rem; }
+	.hero .lead { font-size: 1rem; }
+	.site-nav a { padding: 12px 10px; font-size: 0.95rem; }
+}
+
+/* Performance hint: prefer lazy loading where available */
+img[loading="lazy"] { will-change: transform; }
 .contact-list li {
 	display: flex;
 	align-items: center;

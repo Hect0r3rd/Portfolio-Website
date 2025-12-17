@@ -1,569 +1,658 @@
-/*
-	Beginner-friendly CSS for the personal site.
-	- No CSS Grid used, keeps layout simple with block and flexbox.
-	- Comments explain each section for students.
-*/
-
-/* Color variables: tweak these to adjust the blue palette */
-:root{
-	/* Darkened blue palette for richer accents while staying subtle */
-	--blue-900: #013a63; /* deeper, less bright header color */
-	--blue-600: #0060a8; /* primary button color a bit richer */
-	--blue-100: #e6f3fb; /* slightly darker pale background */
-	--accent-tint: rgba(1,59,99,0.10); /* subtle pill background adjusted */
-	--text-dark: #222;
-}
-
-/* Basic reset and typography */
+/* ===== Reset & Base Styles ===== */
 * {
-	box-sizing: border-box; /* Makes widths and padding predictable */
-}
-html, body {
-	margin: 0;
-	padding: 0;
-	font-family: Arial, Helvetica, sans-serif;
-	line-height: 1.5;
-	color: var(--text-dark);
-	/* Make the whole page sit on a very light blue background */
-	/* Use the CSS variable, but provide a literal fallback in case
-	   the variable isn't available or the stylesheet is cached. */
-	background-color: var(--blue-100, #f2f9ff);
-	background-repeat: no-repeat;
-	background-position: center top;
-	/* Ensure the background covers the viewport height */
-	min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Simple container to center content and limit width */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Container ===== */
 .container {
-	width: 90%;
-	max-width: 900px;
-	margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Header and navigation */
-/* Header: large centered name with subtitle and pill nav (matches example) */
-.site-header {
-	background: transparent; /* let the page blue show through */
-	padding: 28px 0 8px 0;
-	text-align: center;
-}
-.site-header .container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 6px;
-}
-.site-header .logo {
-	font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
-	font-weight: 700;
-	font-size: 3.2rem; /* large name */
-	color: var(--blue-900);
-	margin: 0;
-	line-height: 1;
-}
-.main-nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	gap: 12px;
-}
-.main-nav a {
-	text-decoration: none;
-	color: #fff; /* header links white */
+/* ===== Navigation ===== */
+.navbar, .site-header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Hero section with background image and call-to-action */
-.hero {
-	background-image: url('img/hero-bg.jpg');
-	background-size: cover;
-	background-position: center;
-	color: white;
-    padding: 36px 0 28px 0;
-	position: relative; /* for overlay */
-}
-.hero::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(rgba(1,79,134,0.45), rgba(1,79,134,0.22));
+.navbar .container, .site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Ensure the hero's white container sits above the overlay */
-.hero > .container {
-	position: relative;
-	z-index: 1;
-	color: #fff; /* keep hero text readable */
-	/* Override the default white card for hero so the background shows through */
-	background: transparent;
-	box-shadow: none;
-	padding: 40px 0;
-	border-radius: 0;
+.nav-brand, .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
 }
 
-/* Hero typography tweaks for clearer hierarchy */
-.hero h1 {
-	font-size: 2.8rem;
-	margin: 0 0 12px 0;
-	font-weight: 700;
-}
-.hero .lead {
-	font-size: 1.125rem;
-	margin: 0 0 10px 0;
-	max-width: 900px;
-}
-
-/* Hero CTA layout and subtle resume link */
-.hero .hero-ctas {
-	display: flex;
-	gap: 12px;
-	align-items: center;
-	margin-top: 18px;
-}
-.hero .hero-link {
-	color: rgba(255,255,255,0.95);
-	text-decoration: underline;
-	font-weight: 500;
-}
-.hero .btn {
-	background: rgba(255,255,255,0.12);
-	color: #fff;
-	padding: 10px 16px;
-	border-radius: 6px;
-}
-.hero .btn:hover {
-	background: rgba(255,255,255,0.16);
-}
-.site-header {
-  background: transparent; /* let the page blue show through */
-  padding: 18px 0 6px 0;
-}
-.site-header .container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-.logo {
-	font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
-	font-weight: 700;
-	font-size: 2.8rem; /* much larger name */
-	margin: 0;
-	color: #fff;
-	text-align: center;
-}
-/* Ensure any old main-nav rules don't interfere with the pill nav */
-.main-nav { display: none; }
-
-
-/* Updated header style */
-/* smaller subtitle */
-.site-header .subtitle {
-	font-family: 'Roboto', Arial, sans-serif;
-	font-size: 1rem;
-	color: rgba(1,59,99,0.7);
-	margin: 0 0 12px 0;
-}
-
-/* Adjust spacing between name and subtitle */
 .site-nav {
-	background: transparent; /* keep header area clean */
-	padding: 0 0 18px 0;
-}
-.site-nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	gap: 12px;
-}
-.site-nav a {
-	display: inline-block;
-	background: rgba(0,116,204,0.18); /* soft blue pill */
-	color: var(--blue-900);
-	padding: 8px 14px;
-	border-radius: 8px;
-	text-decoration: none;
-	font-weight: 500;
-}
-.site-nav a:hover {
-	background: rgba(0,116,204,0.28);
+    background-color: #333;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Fixed syntax errors */
-.main-nav {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+.nav-menu, .main-nav ul, .site-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* Corrected misplaced braces */
-.hero-photo {
-  width: 96px;
-  height: 96px;
-  max-width: 96px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid rgba(255,255,255,0.6);
+.nav-menu a, .main-nav a, .site-nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
+
+.nav-menu a:hover, .main-nav a:hover, .site-nav a:hover {
+    color: #00bfff;
+}
+
+.nav-menu a.active, .main-nav a.active, .site-nav a.active {
+    color: #00bfff;
+    pointer-events: none;
+    cursor: default;
+    font-weight: 700;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
 .hero h2 {
-	margin: 0 0 8px 0;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-/* About section grid (simple flexbox) */
-.about-grid {
-	display: flex;
-	gap: 18px;
-	align-items: flex-start;
-}
-.about-bio {
-	flex: 1 1 55%;
-}
-.about-bio {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-}
-.about-bio .about-photo {
-	width: 140px;
-	height: 140px;
-	object-fit: cover;
-	border-radius: 50%; /* make circular */
-	margin-bottom: 12px;
-	border: 4px solid rgba(255,255,255,0.8);
-	box-shadow: 0 6px 18px rgba(2,41,71,0.08);
-}
-.about-skills {
-	flex: 1 1 40%;
-}
-.about-photo {
-	width: 120px;
-	height: 120px;
-	object-fit: cover;
-	border-radius: 8px;
-	display: block;
-	margin-bottom: 12px;
+.hero p, .hero .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
-/* Buttons */
-.btn {
-	display: inline-block;
-	background: var(--blue-600);
-	color: #fff;
-	padding: 8px 12px;
-	text-decoration: none;
-	border-radius: 4px;
-	border: none;
-}
-.btn:hover {
-	background: #005fa1;
+.hero .hero-ctas {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
 }
 
-/* Sections */
-section {
-	padding: 28px 0;
+.hero .hero-link {
+    color: rgba(255,255,255,0.95);
+    text-decoration: underline;
+    font-weight: 500;
 }
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* ===== Additional Navigation Styles ===== */
+.site-header .subtitle, .tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    margin: 0 0 12px 0;
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* ===== Photo Styles ===== */
+.hero-photo, .about-photo {
+    width: 120px;
+    height: 120px;
+    max-width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.8);
+    margin-bottom: 12px;
+}
+
+/* ===== About Section ===== */
+.about {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
 .about p {
-	margin: 0;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+    text-align: center;
 }
 
-/* Skills list styles */
-.skills-list {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px 12px;
+.about-grid {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 0 auto;
 }
+
+.about-bio {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-skills {
+    flex: 1 1 40%;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-block;
+    background-color: #00bfff;
+    color: white;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #0099cc;
+}
+
+.btn-small {
+    display: inline-block;
+    background-color: #667eea;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-small:hover {
+    background-color: #764ba2;
+}
+
+/* ===== Sections ===== */
+section {
+    padding: 4rem 0;
+}
+
+section > .container {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Skills Section ===== */
+.skills {
+    padding: 4rem 0;
+    background-color: #f4f4f4;
+}
+
+.skills h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
 .skills-list li {
-	background: #eef6fb; /* soft pale badge background */
-	padding: 8px 12px;
-	border-radius: 8px;
-	font-size: 0.98rem;
-	color: var(--text-dark);
-	display: inline-flex;
-	align-items: center;
-	gap: 0.6rem;
-	box-shadow: 0 1px 0 rgba(2,41,71,0.02);
+    background: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #333;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Icon inside skill badge: small rounded square to match screenshot */
+.skills-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 .skills-list li i {
-	width: 28px;
-	height: 28px;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	margin: 0;
-	font-size: 0.9rem;
-	color: #ffffff;
-	background: var(--blue-600);
-	border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #667eea;
 }
 
-/* Slight spacing for the list container */
-.skills-list {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px 12px;
+/* ===== Interests Section ===== */
+.interests {
+    padding: 4rem 0;
+    background-color: white;
 }
 
-/* Interests list uses the same pill style as skills */
+.interests h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
 .interests-list {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px 12px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
+
 .interests-list li {
-	background: rgba(0,116,204,0.06); /* soft warm-blue tint */
-	padding: 6px 10px;
-	border-radius: 4px;
+    background: #f4f4f4;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #333;
 }
 
-/* Soft section backgrounds to gently use blue without overpowering */
-section.skills,
-section.interests {
-	background: var(--blue-100);
-	border-radius: 6px;
-	padding: 18px 0;
+/* ===== Projects Section ===== */
+.projects {
+    padding: 4rem 0;
+    background-color: #f4f4f4;
 }
 
-/* Print-friendly hint: if students print this page, hide non-essential UI */
-@media print {
-	.site-header, .main-nav, .btn { display: none; }
-	.container { width: 100%; }
+.projects h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
 }
 
-/* Projects: simple card layout using flexbox */
-.project {
-	display: flex;
-	gap: 16px;
-	align-items: center;
-	border: 1px solid #eeeeee;
-	padding: 12px;
-	border-radius: 6px;
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
+
+.project-card, .project {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover, .project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3, .project h3 {
+    margin-bottom: 1rem;
+    color: #667eea;
+}
+
+.project-card p, .project p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
 .project img {
-	width: 140px;
-	height: 100px;
-	object-fit: cover;
-	border-radius: 4px;
+    width: 100%;
+    max-width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
-/* Projects list: simple vertical list with space */
 .projects-list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: block;
-	gap: 12px;
-}
-.projects-list li {
-	margin-bottom: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
-/* Interests gallery: flexible row that wraps */
+/* ===== Gallery Styles ===== */
 .interests-gallery {
-	display: flex;
-	gap: 12px;
-	flex-wrap: wrap;
-}
-.interests-gallery figure {
-	margin: 0;
-	width: calc(33% - 8px);
-}
-.interests-gallery img {
-	width: 100%;
-	height: 120px;
-	object-fit: cover;
-	border-radius: 6px;
-}
-.interests-gallery figcaption {
-	font-size: 0.9rem;
-	text-align: center;
-	margin-top: 6px;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-/* Contact form styles */
-.contact-form {
-	max-width: 480px;
-	display: grid;
-	gap: 8px;
+.interests-gallery figure {
+    margin: 0;
+    width: calc(33.333% - 1rem);
+    min-width: 250px;
 }
+
+.interests-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.interests-gallery figcaption {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
+/* ===== Contact Section ===== */
+.contact {
+    padding: 4rem 0;
+    background-color: white;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+}
+
 .contact-form input,
 .contact-form textarea {
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
 }
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
 .contact-form label {
-	font-size: 0.9rem;
+    font-size: 0.9rem;
+    text-align: left;
+    font-weight: 600;
 }
 
-/* Centered contact list with icons */
+/* ===== Contact List ===== */
 .contact-list {
-	list-style: none;
-	padding: 0;
-	margin: 8px 0 0 0;
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	align-items: center; /* centers the list horizontally */
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
 
-/* === New: Case studies, responsive nav & mobile tweaks === */
-/* Keep nav usable on small screens and increase tap targets */
-.site-nav ul {
-	flex-wrap: wrap;
-}
-.site-nav li { list-style: none; }
-.site-nav a { padding: 10px 14px; }
-
-/* Case study / project styles */
-.case-study {
-	border-radius: 8px;
-	background: #ffffff;
-	padding: 18px;
-	margin: 14px 0;
-	box-shadow: 0 6px 18px rgba(2,41,71,0.06);
-	color: var(--text-dark);
-}
-.case-study h3 { margin-top: 0; }
-.case-study .meta { font-size: 0.95rem; color: rgba(0,0,0,0.6); margin-bottom: 8px; }
-.case-study img { max-width: 100%; height: auto; display: block; border-radius: 6px; margin: 10px 0; }
-.case-study .section-title { font-weight: 700; margin: 12px 0 6px 0; }
-
-@media (max-width: 640px) {
-	.container { width: 94%; }
-	.site-header .logo { font-size: 2rem; }
-	.hero h1 { font-size: 1.8rem; }
-	.hero .lead { font-size: 1rem; }
-	.site-nav a { padding: 12px 10px; font-size: 0.95rem; }
-}
-
-/* Performance hint: prefer lazy loading where available */
-img[loading="lazy"] { will-change: transform; }
 .contact-list li {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	background: var(--accent-tint);
-	padding: 8px 12px;
-	border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f4f4f4;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    min-width: 300px;
+    transition: background-color 0.3s ease;
 }
+
+.contact-list li:hover {
+    background: #e8e8e8;
+}
+
 .contact-list li i {
-	width: 22px;
-	text-align: center;
-	color: var(--blue-600);
+    width: 24px;
+    text-align: center;
+    color: #667eea;
+    font-size: 1.2rem;
 }
+
 .contact-list a {
-	color: var(--text-dark);
-	text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
+
 .contact-list a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
+    color: #667eea;
 }
 
-/* Footer */
-.site-footer {
-	background: #f8f8f8;
-	border-top: 1px solid #eee;
-	padding: 12px 0;
-	text-align: center;
-	font-size: 0.9rem;
+/* ===== Case Studies ===== */
+.case-study {
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation bar styles */
-.site-nav {
-  background-color: var(--blue-900);
-  padding: 10px 0;
-  text-align: center;
-}
-.site-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.site-nav a {
-  text-decoration: none;
-  color: white;
-  font-size: 1rem;
-}
-.site-nav a:hover {
-  text-decoration: underline;
+.case-study h3 {
+    margin-top: 0;
+    color: #667eea;
+    font-size: 1.5rem;
 }
 
-/* Responsive: stack hero content on small screens */
-@media (max-width: 600px) {
-	.hero-content {
-		flex-direction: column;
-		text-align: center;
-	}
-	.project {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	.main-nav ul {
-		gap: 8px;
-	}
+.case-study .meta {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1rem;
 }
 
-/* Make content sections appear as white cards on the blue background */
-section > .container {
-	background: #fff;
-	border-radius: 8px;
-	padding: 22px;
-	box-shadow: 0 6px 18px rgba(2,41,71,0.06);
-}
-/* Center headings inside the white boxes to match example */
-section > .container h2,
-section > .container h3 {
-	text-align: center;
+.case-study img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* On About cards prefer left-aligned heading for better flow on homepage */
-.about > .container h2 {
-	text-align: left;
-	font-size: 1.25rem;
-	margin-top: 0;
+.case-study .section-title {
+    font-weight: 700;
+    margin: 1.5rem 0 0.75rem 0;
+    color: #333;
 }
 
-/* Headings and typographic rhythm */
+/* ===== Footer ===== */
+.footer, .site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer p, .site-footer p {
+    margin: 0;
+}
+
+/* ===== Headings ===== */
 h2 {
-	font-family: 'Poppins', sans-serif;
-	font-size: 1.4rem;
-	margin-top: 0;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
 }
+
 h3 {
-	font-family: 'Poppins', sans-serif;
-	font-size: 1.1rem;
-	margin-bottom: 6px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #667eea;
 }
 
-/* Tagline styling for pages like About/Intro */
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .nav-menu, .site-nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero p, .hero .lead {
+        font-size: 1rem;
+    }
+
+    .projects-grid, .projects-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-grid {
+        flex-direction: column;
+    }
+
+    .interests-gallery figure {
+        width: 100%;
+    }
+
+    .container {
+        width: 94%;
+        padding: 0 15px;
+    }
+
+    .logo, .nav-brand {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+
+    .nav-menu, .site-nav ul {
+        gap: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    section {
+        padding: 2rem 0;
+    }
+}
+
+/* ===== Additional Utility Styles ===== */
 .tagline {
-	display: block;
-	font-size: 1rem;
-	color: var(--blue-900);
-	margin: 8px 0 12px 0;
-	text-align: center;
-	font-weight: 600;
+    display: block;
+    font-size: 1.1rem;
+    color: white;
+    margin: 0.5rem 0 1rem 0;
+    text-align: center;
+    font-weight: 500;
 }
 
-/* Ensure paragraph text inside content cards is visible and spaced */
-section > .container p {
-	color: var(--text-dark);
-	margin: 0 0 12px 0;
+/* Print styles */
+@media print {
+    .site-header, .navbar, .main-nav, .btn {
+        display: none;
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
+/* Performance optimization */
+img[loading="lazy"] {
+    will-change: transform;
+}
 
-/* End of beginner-friendly CSS */
+/* Smooth transitions */
+a, button, .btn, .project-card, .project {
+    transition: all 0.3s ease;
+}
